@@ -48,11 +48,11 @@ def upload_video(request):
 # this shows the data of the cart if it exist.
 # In this i used try-catch b/c it was showing error that Cart is not a iterator.
 def cart(request):
-    p = Cart.objects.get(std_name = request.user.username)
+    p = Cart.objects.filter(std_name = request.user.username)
     products = []
     try:
         for i in p:
-            products.append(Courses.objects.get(title = i.courses))
+            products.append(Courses.objects.filter(title = i.courses))
         return render(request , "courses/cart.html" , {'products':products})
     except:
         if(len(products) == 1):
@@ -60,10 +60,14 @@ def cart(request):
         else:
             return render(request , "courses/cart.html" , {'msg':"There is no items in your cart."})
 
+
+
 # this function add cart by clicking "Add to cart" button
 def AddToCart(request ,course):
-    Cart(course , request.user.username).save()
+    Cart(courses = course , std_name = request.user.username).save()
     return render(request , 'courses/dashboard.html' , {'msg' : 'Course have been added to the cart'})
+
+
 
 """
 Note : Both student_profile and teacher_profile function automatically invokes
