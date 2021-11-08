@@ -54,7 +54,6 @@ class Student(models.Model):
     address=models.TextField()
     updated_at=models.DateTimeField(auto_now_add=True)
     created_at=models.DateTimeField(auto_now_add=True)
-    cart = models.TextField()                       
             
     
 
