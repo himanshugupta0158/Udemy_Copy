@@ -13,6 +13,7 @@ def dashboard(request):
     return render(request , 'courses/dashboard.html' , {'courses' : course})
    
 
+# this one show profile for currently logged in user it can be either student or teacher.
 def profile(request ):
     n1 = None
     try:
@@ -30,11 +31,7 @@ def profile(request ):
         return render(request , "courses/dashboard.html" , {'msg' : "Error : profile cannot be displayed "})
 
     
-  
-   
-
-
-
+# this is used to upload video by teacher.
 def upload_video(request):
     if request.method == 'POST':
         title = request.POST['title']
@@ -48,7 +45,8 @@ def upload_video(request):
         return render(request,'courses/dashboard.html' , {'msg' : msg})
     return render(request , 'courses/upload.html')
 
-
+# this shows the data of the cart if it exist.
+# In this i used try-catch b/c it was showing error that Cart is not a iterator.
 def cart(request):
     p = Cart.objects.get(std_name = request.user.username)
     products = []
@@ -101,8 +99,7 @@ def teacher_profile(request):
         return render(request , "users/teacher_profile.html")
 
 
-
-    
+# this is used to register students.
 def register(request):
     if request.method == "GET":
         return render(request , "users/register.html" , 
@@ -120,6 +117,7 @@ def register(request):
             return render(request , "users/register.html" , {'msg' : "Invalid input in password or email!"})
 
 
+# this is used to register teacher
 def register_staff(request):
     if request.method == "GET":
         return render(request , "users/register_staff.html" , 

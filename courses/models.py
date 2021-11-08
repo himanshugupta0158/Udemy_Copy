@@ -26,10 +26,6 @@ class Cart(models.Model):
 
 
 
-# class CustomUser(models.Model):
-#     user_type_data = ((1,"Admin") , (2 , "Teacher"), (3,"Student"))
-#     user_type = models.CharField(default=1,choices=user_type_data ,max_length=10)
-
 
 class Teacher(models.Model):
     id=models.AutoField(primary_key=True)
