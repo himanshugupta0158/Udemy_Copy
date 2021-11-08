@@ -1,12 +1,41 @@
 {% extends "courses/main.html" %} {% block main_content %}
 <form action="" method="POST">{% csrf_token %}
+ <div class="input-group mb-3">
+    <div class="input-group-prepend">
+ <span class="input-group-text">Video Title</span>
+    </div>
+    <input type="text" name="title" placeholder="Enter Video Title here">
+  </div>
 
-    <input type="text" name="title" placeholder="Enter Video Title here"><br>
-    <input type="text" name="description" , placeholder="Description of content"> <br>
-    <input type="text" name="author" , value="{{user.username}}"> <br>
-    <input type="number" name="price" placeholder="price of video"> <br>
-    <input type="file" name="video" accept="video/*"> <br>
-    <button type="submit"> Upload New Video </button>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+ <span class="input-group-text">Video description</span>
+    </div>
+    <input type="text" name="description" , placeholder="Description of content">
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+ <span class="input-group-text">Author Name</span>
+    </div>
+    <input type="text" name="author" , value="{{user.username}}">
+  </div>
+
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+ <span class="input-group-text">Price</span>
+    </div>
+    <input type="number" name="price" placeholder="price of video">
+  </div>
+
+<div class="custom-file">
+    <input type="file" name="video" accept="video/*" class="custom-file-input" id="customFile"> <br>
+    <label class="custom-file-label" for="customFile">Choose file</label>
+  </div>
+    <button type="submit" class="btn btn-success"> Upload New Video </button>
 
 </form>
+
+
 {% endblock %}
