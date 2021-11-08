@@ -116,7 +116,7 @@ def register(request):
             user = form.save()
             login(request , user)
             msg = "Signin successfully"
-            return render(request , "users/student_profile.html" , {"msg" : msg})
+            return redirect('student_profile')
         else:
             return render(request , "users/register.html" , {'msg' : "Invalid input in password or email!"})
 
