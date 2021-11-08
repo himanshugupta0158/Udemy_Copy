@@ -10,7 +10,7 @@ Welcome , Mr.{{user.username}}
     {% csrf_token %}
     <input type="text" name="name" value="{{user.username}}" >
     <input type="text" name="address" placeholder="Enter your address">
-    Profile pic : <input type="file" name="profile_pic" action="img/*">
+    Profile pic : <input type="file" name="profile_pic" action="/*">
     <input type="text" name="gender" placeholder="Your gender">
     <input type="text" name="skills" placeholder="Enter your skills">
     <button type="submit" class="btn btn-success">submit</button>

@@ -30,12 +30,20 @@
   </div>
 
 <div class="custom-file">
-    <input type="file" name="video" accept="/video/*" class="custom-file-input" id="customFile"> <br>
+    <input type="file" name="video" accept="video/*" class="custom-file-input" id="customFile"> <br>
     <label class="custom-file-label" for="customFile">Choose file</label>
   </div>
     <button type="submit" class="btn btn-success"> Upload New Video </button>
 
 </form>
 
+
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
 
 {% endblock %}

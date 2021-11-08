@@ -83,7 +83,7 @@ def student_profile(request):
         gender = request.POST['gender']
         std = Student(name = name , profile_pic = pic , gender = gender ,profession = 'Student' ,  address = address)
         std.save()
-        return render(request , "courses/dashboard.html")
+        return render(request , "courses/dashboard.html" ,{'prof' : std} )
     else:
         return render(request , "users/student_profile.html")
 
@@ -98,7 +98,7 @@ def teacher_profile(request):
         skills = request.POST['skills']
         teacher = Teacher(name = name , profile_pic = pic , address = address , gender = gender , profession = 'Teacher', skills = skills)
         teacher.save()
-        return render(request , "courses/dashboard.html")
+        return render(request , "courses/dashboard.html" , {'prof' : teacher})
     else:
         return render(request , "users/teacher_profile.html")
 
