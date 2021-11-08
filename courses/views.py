@@ -136,6 +136,6 @@ def register_staff(request):
             user.save()
             login(request , user)
             msg = "Signin successfully"
-            return render(request , "users/teacher_profile.html" , {"msg" : msg})
+            return redirect('teacher_profile')
         else:
             return render(request , "users/register_staff.html" , {'msg' : "Invalid input in password or email!"})
