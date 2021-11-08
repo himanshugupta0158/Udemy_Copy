@@ -30,6 +30,16 @@ def profile(request ):
     else:
         return render(request , "courses/dashboard.html" , {'msg' : "Error : profile cannot be displayed "})
 
+
+
+def transaction(request , product):
+    try:
+        return render(request , 'courses/transaction.html' , {'product' : Courses.objects.filter(title = product)})
+    except:
+        return render(request , "courses/dashboard.html" , {'msg' : "Error : transaction failed "})
+
+
+
     
 # this is used to upload video by teacher.
 def upload_video(request):

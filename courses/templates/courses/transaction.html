@@ -1,0 +1,17 @@
+{% extends 'courses/base.html' %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+<h2>Transaction Successful ....</h2>
+Name : {{user.username}} <br>
+Course Video : {{product.title}} <br>
+Course Description : {{product.description}} <br>
+Author : {{product.Teacher_name}} <br>
+price : {{products.price}}
+{% else %}
+<h3>Please , login </h3>
+        <a href="{% url 'login' %}">Login</a>
+{% endif %}
+
+{% endblock content %}
