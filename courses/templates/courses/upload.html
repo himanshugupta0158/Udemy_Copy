@@ -1,0 +1,12 @@
+{% extends "courses/main.html" %} {% block main_content %}
+<form action="" method="POST">{% csrf_token %}
+
+    <input type="text" name="title" placeholder="Enter Video Title here"><br>
+    <input type="text" name="description" , placeholder="Description of content"> <br>
+    <input type="text" name="author" , value="{{user.username}}"> <br>
+    <input type="number" name="price" placeholder="price of video"> <br>
+    <input type="file" name="video" accept="video/*"> <br>
+    <button type="submit"> Upload New Video </button>
+
+</form>
+{% endblock %}

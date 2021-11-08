@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style>
+        .udemy {
+            color: red;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="{% url 'dashboard' %}" role="tab" aria-controls="Dashboard" aria-selected="true">Dashboard</a>
+        </li>
+        {% if user.username %}
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'profile' %}" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'upload' %}" role="tab" aria-controls="Upload Courses" aria-selected="false">Upload Courses</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'cart' %}" role="tab" aria-controls="logout" aria-selected="false">Cart</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'password_change' %}" role="tab" aria-controls="Change Password" aria-selected="false">Change Password</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'logout' %}" role="tab" aria-controls="logout" aria-selected="false">Logout</a>
+        </li>
+
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="{% url 'login' %}" role="tab" aria-controls="Login" aria-selected="false">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="{% url 'register' %}" role="tab" aria-controls="Register as Student" aria-selected="false">Register as Student</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="{% url 'register_staff' %}" role="tab" aria-controls="Register as Teacher" aria-selected="false">Register as Teacher</a>
+        </li>
+        {% endif %}
+    </ul>
+    <h1 class="udemy" align="center">Udemy</h1>
+    {% block main_content %} {% endblock main_content %}</body>
+
+</html>

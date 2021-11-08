@@ -1,0 +1,25 @@
+{% extends 'courses/base.html' %}
+
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="card" style="width: 40rem; padding : 25px;">
+
+<h2>Register as a Student</h2>
+{% if msg %}
+<h3> {{msg}} </h3>
+ 
+{% else %}
+
+<form method="post" >
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Register</button>
+</form>
+{% endif %}
+<a href="{% url 'login' %}">Back to login</a>
+</div>
+
+{% endblock %}

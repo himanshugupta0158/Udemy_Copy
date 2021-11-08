@@ -1,0 +1,65 @@
+{% extends 'courses/main.html' %}
+
+{% block main_content %}
+{% comment %}< Condition 1 > {% endcomment %}
+{% if msg and not product%}
+{{msg}}
+{% endif %}
+
+{% comment %}< Condition 2 > {% endcomment %}
+{% if msg != 'single' and products %}
+
+<h1>All Courses</h1>
+    <div class="row">
+{% for product in products %}
+        <div class="col-md-4">
+            <div class="card mb-2">
+                <video class="card-img-top" width="320" height="240" controls>
+                    <source src="{{product.video.url}}" type="video/mkv"> 
+                    <source src="{{product.video.url}}" type="video/mp4"> 
+                </video>
+                </h5 class="card-title">{{product.title}}</h5>
+                           
+                <p class="card-text">{{product.description}}</p>
+                <p class="card-text">Price :<div style="border:1px solid gray;">{{product.price}}</div></p>
+                <a href="#" class="btn btn-primary">Buy</a>
+                <p class="card-footer">Author : <small class="text-muted">{{product.Teacher_name}}</small></p>
+                <p class="card-footer">Created on : <small class="text-muted">{{product.created_on}}</small></p>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+</div>
+{% endif %}
+
+{% comment %}< Condition 3 > {% endcomment %}
+{% if msg == 'single' and products %}
+<h1>All Courses</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-2">
+                <video class="card-img-top" width="320" height="240" controls>
+                    <source src="{{products.video.url}}" type="video/mkv"> 
+                    <source src="{{products.video.url}}" type="video/mp4"> 
+                </video>
+               </h5 class="card-title">{{products.title}}</h5>
+                
+                <p class="card-text">{{products.description}}</p>
+                <p class="card-text">Price :<div style="border:1px solid gray;">{{products.price}}</div></p>
+                <a href="#" class="btn btn-primary">Buy</a>
+                <p class="card-footer">Author : <small class="text-muted">{{products.Teacher_name}}</small></p>
+                <p class="card-footer">Created on : <small class="text-muted">{{products.created_on}}</small></p>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endif %}
+
+
+{% endblock main_content %}

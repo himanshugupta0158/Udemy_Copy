@@ -1,0 +1,17 @@
+{% extends 'courses/main.html' %}
+
+
+{% block main_content %}
+
+<img src="{{person.profile_pic.url}}" alt="My_profile_picture" style="border:1px solid black;"> <br>
+Name : {{person.name}} <br>
+Profession : {{person.profession}} <br> 
+Gender : {{person.gender}} <br> 
+Address : {{person.address}} <br>
+Created Profile on : {{person.created_at}} <br>
+{% if profession == 'Teacher' %} <br>
+skills : {{person.skills}} <br>
+{% endif %}
+
+
+{% endblock main_content %}

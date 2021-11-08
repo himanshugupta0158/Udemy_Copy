@@ -1,0 +1,21 @@
+{% extends 'courses/base.html' %}
+
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2>Register as a Teacher</h2>
+
+{% if msg %}
+<h3> {{msg}} </h3>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+  {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Register</button>
+</form>
+
+<a href="{% url 'login' %}">Back to login</a>
+</div>
+{% endblock %}
