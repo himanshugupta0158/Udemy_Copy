@@ -32,9 +32,9 @@ def profile(request ):
 
 
 
-def transaction(request , product):
+def transaction(request , title):
     try:
-        return render(request , 'courses/transaction.html' , {'product' : Courses.objects.filter(title = product)})
+        return render(request , 'courses/transaction.html' , {'product' : Courses.objects.get(title = title)})
     except:
         return render(request , "courses/dashboard.html" , {'msg' : "Error : transaction failed "})
 
@@ -42,9 +42,6 @@ def transaction(request , product):
 def show_video(request , title):
     video = Courses.objects.get(title = title)
     return render(request , 'courses/show_video.html' , {'video' : video})
-    # except:
-    #     return render(request , 'courses/dashboard.html' , {'msg' : 'Some problem occured in displaying video.'})
-
 
     
 # this is used to upload video by teacher.

@@ -3,12 +3,20 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+<a href="{% url 'dashboard' %}">Go Back Dashboard</a>
+<br>
 <h2>Transaction Successful ....</h2>
-Name : {{user.username}} <br>
-Course Video : {{product.title}} <br>
-Course Description : {{product.description}} <br>
-Author : {{product.Teacher_name}} <br>
-price : {{products.price}}
+<div style="border: 1px solid blue;">
+<div style="border: 1px solid blue;">
+<h3 style="color:red;text-align:center;">Receipt</h3>
+<hr style="background-color:blue;">
+&nbsp; Recipent Name : {{user.username}} <hr>
+&nbsp; Course Video : {{product.title}} <hr>
+&nbsp; Course Description : {{product.description}} <hr>
+&nbsp; Course Author : {{product.Teacher_name}} <hr>
+&nbsp; Course price : {{product.price}}
+</div>
+</div>
 {% else %}
 <h3>Please , login </h3>
         <a href="{% url 'login' %}">Login</a>
