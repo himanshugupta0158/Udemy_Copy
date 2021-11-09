@@ -8,11 +8,11 @@ Welcome , Mr.{{user.username}}
 {% endif %}
 <form method="post">
     {% csrf_token %}
-    <input type="text" name="name" value="{{user.username}}" >
-    <input type="text" name="address" placeholder="Enter your address">
-    Profile pic : <input type="file" name="profile_pic" action="/*">
-    <input type="text" name="gender" placeholder="Your gender">
-    <input type="text" name="skills" placeholder="Enter your skills">
+    <input type="text" name="name" value="{{user.username}}" > <br>
+    <input type="text" name="Email_address" value="{{user.email}}"> <br>
+    Profile pic : <input type="file" name="profile_pic" action="/*"> <br>
+    <input type="text" name="gender" placeholder="Your gender"> <br>
+    <input type="text" name="skills" placeholder="Enter your skills"> <br>
     <button type="submit" class="btn btn-success">submit</button>
 </form>
 

@@ -50,9 +50,10 @@ def upload_video(request):
         title = request.POST['title']
         video = request.POST['video']
         description = request.POST['description']
+        category = request.POST['category']
         author_name = request.POST['author']
         price = request.POST['price']
-        content = Courses(title=title,description= description, Teacher_name = author_name ,price=price ,video = video)
+        content = Courses(title=title,description= description,category = category ,Teacher_name = author_name ,price=price ,video = video)
         content.save()
         msg = "video uploaded successfully"
         return render(request,'courses/dashboard.html' , {'msg' : msg})
@@ -91,10 +92,10 @@ after either student or teacher logged in.
 def student_profile(request):
     if request.method == "POST" : 
         name = request.POST['name']
-        address = request.POST['address']
+        Email_address = request.POST['Email_address']
         pic = request.POST['profile_pic']
         gender = request.POST['gender']
-        std = Student(name = name , profile_pic = pic , gender = gender ,profession = 'Student' ,  address = address)
+        std = Student(name = name , profile_pic = pic , gender = gender ,profession = 'Student' ,  Email_address = Email_address)
         std.save()
         return render(request , "courses/dashboard.html" ,{'prof' : std} )
     else:
@@ -105,11 +106,11 @@ def student_profile(request):
 def teacher_profile(request):
     if request.method == "POST" : 
         name = request.POST['name']
-        address = request.POST['address']
+        Email_address = request.POST['Email_address']
         pic = request.POST['profile_pic']
         gender = request.POST['gender']
         skills = request.POST['skills']
-        teacher = Teacher(name = name , profile_pic = pic , address = address , gender = gender , profession = 'Teacher', skills = skills)
+        teacher = Teacher(name = name , profile_pic = pic , Email_address = Email_address , gender = gender , profession = 'Teacher', skills = skills)
         teacher.save()
         return render(request , "courses/dashboard.html" , {'prof' : teacher})
     else:
