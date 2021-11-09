@@ -9,10 +9,12 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card mb-2">
+            <a href="{% url 'show_video' course.title %}">
                 <video class="card-img-top" width="320" height="240" controls>
                     <source src="{{course.video.url}}" type="video/mkv"> 
                     <source src="{{course.video.url}}" type="video/mp4"> 
                 </video>
+            </a>
                </h5 class="card-title">{{course.title}}</h5>
                 
                 <p class="card-text">{{course.description}}</p>
@@ -21,6 +23,7 @@
                 
                 <p class="card-text">Price :<div style="border:1px solid gray;">{{course.price}}</div></p>
                 <a href="{% url 'transaction' course.title %}" class="btn btn-primary">Buy</a>
+                <a href="{% url 'AddToCart' course.title %}" class="btn btn-success">Add to Cart</a>                
                 <p class="card-footer">Author : <small class="text-muted">{{course.Teacher_name}}</small></p>
                 <p class="card-footer">Created on : <small class="text-muted">{{course.created_on}}</small></p>
 
@@ -41,10 +44,12 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card mb-2">
+            <a href="{% url 'show_video' course.title %}">
                 <video class="card-img-top" width="320" height="240" controls>
                     <source src="{{course.video.url}}" type="video/mkv"> 
                     <source src="{{course.video.url}}" type="video/mp4"> 
                 </video>
+            </a>
                </h5 class="card-title">{{course.title}}</h5>
                 
                 <p class="card-text">{{course.description}}</p>
@@ -53,6 +58,7 @@
                 
                 <p class="card-text">Price :<div style="border:1px solid gray;">{{course.price}}</div></p>
                 <a href="{% url 'transaction' course.title %}" class="btn btn-primary">Buy</a>
+                <a href="{% url 'AddToCart' course.title %}" class="btn btn-success">Add to Cart</a>
                 <p class="card-footer">Author : <small class="text-muted">{{course.Teacher_name}}</small></p>
                 <p class="card-footer">Created on : <small class="text-muted">{{course.created_on}}</small></p>
 
