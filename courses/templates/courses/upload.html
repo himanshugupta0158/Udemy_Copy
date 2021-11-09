@@ -21,7 +21,14 @@
     <div class="input-group-prepend">
  <span class="input-group-text">Video Category</span>
     </div>
-    <input type="text" name="category" placeholder="Category of content">
+    {% comment %} <input type="text" name="category" placeholder="Category of content"> {% endcomment %}
+    <select name="category" >
+        <option selected>Choose...</option>
+        <option>Python</option>
+        <option>Java</option>
+        <option>Kotlin</option>
+        <option>Other</option>
+      </select>
   </div>
 
   <div class="input-group mb-3">
@@ -40,9 +47,11 @@
   </div>
 
 <div class="custom-file">
-    <input type="file" name="video" accept="/video/*" class="custom-file-input" id="customFile"> <br>
+    <input type="file" name="video" accept="/video/*" class="custom-file-input" id="customFile" > <br>
     <label class="custom-file-label" for="customFile">Choose file</label>
   </div>
+
+  
     <button type="submit" class="btn btn-success"> Upload New Video </button>
 
 </form>
