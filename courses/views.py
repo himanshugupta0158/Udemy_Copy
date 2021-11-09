@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.models import User
-from .models import Courses , Cart , Teacher , Student
+from .models import Courses , Cart , Teacher , Student , Buy
 from django.urls import reverse
 from courses.forms import CustomUserCreationForm , UserManager
 from django.contrib.auth.decorators import login_required
@@ -11,7 +11,12 @@ from django.core.files.storage import FileSystemStorage
 # this is Dashboard function to show all the video
 def dashboard(request):
     course = Courses.objects.all()
-    return render(request , 'courses/dashboard.html' , {'courses' : course})
+    l = []
+    buyed = Buy.objects.all()
+    for i in buyed :
+        if request.user.username == i.buyer:
+            l.append(i.course)
+    return render(request , 'courses/dashboard.html' , {'courses' : course , 'buyed' : l})
    
 
 # this one show profile for currently logged in user it can be either student or teacher.
@@ -48,6 +53,15 @@ def check_user(request ):
         return render(request , "courses/dashboard.html" , {'msg' : "Error : profile cannot be displayed "})
 
 
+def buy(request , title):
+    try:
+        Buy(buyer = request.user.username , course = title).save()
+        return render(request , 'courses/transaction.html' , {'product' : Courses.objects.get(title = title)})
+    except:
+        return render(request , "courses/dashboard.html" , {'msg' : "Error : transaction failed "})
+
+
+
 def transaction(request , title):
     try:
         return render(request , 'courses/transaction.html' , {'product' : Courses.objects.get(title = title)})
@@ -61,7 +75,12 @@ def show_video(request , title):
 
 
 def course_category(request):
-    return render(request , 'courses/course_category.html' , {'courses' : Courses.objects.all()})
+    l = []
+    buyed = Buy.objects.all()
+    for i in buyed :
+        if request.user.username == i.buyer:
+            l.append(i.course)
+    return render(request , 'courses/course_category.html' , {'courses' : Courses.objects.all() ,'buyed' : l })
     # except:
     #     return render(request , 'courses/dashboard.html' , {'msg' : 'There is no course category exist.'})
 
@@ -95,7 +114,7 @@ def cart(request):
         return render(request , "courses/cart.html" , {'products':products})
     except:
         if(len(products) == 1):
-            return render(request , "courses/cart.html" , {'products':Courses.objects.get(title = p.courses) , 'msg' : 'single'})
+            return render(request , "courses/cart.html" , {'products':Courses.objects.get(title = p[0].courses) , 'msg' : 'single'})
         else:
             return render(request , "courses/cart.html" , {'msg':"There is no items in your cart."})
 

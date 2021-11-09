@@ -10,6 +10,16 @@
     {% if msg %}
     <h2>{{msg}}</h2>
     {% endif %}
+    {% if msg == "Error : profile cannot be displayed " %} <br>
+    <h3>You are seeing this because you have not created you profile.</h3> <br>
+    <a href="{% url 'student_profile' %}">Create student Profile</a><br>
+    <a href="{% url 'teacher_profile' %}">Create teacher Profile</a><br>
+    {% endif %}
+
+<br>
+    {% for i in buyed %}
+    Buyed courses Name : {{i}} <br>
+    {% endfor %}
 
     {% if courses %}
     
@@ -42,9 +52,15 @@
                     <div style="border:1px solid gray;">{{course.price}}</div>
                 </p>
                 {% if user.username != course.Teacher_name %}
-                <a href="{% url 'transaction' course.title %}" class="btn btn-primary">Buy</a>
+
+                {% if course.title in buyed %}
             
+                {% else %}
+                <a href="{% url 'buy' course.title %}" class="btn btn-primary">Buy</a>
+                {% endif %}
+                
                 <a href="{% url 'AddToCart' course.title %}" class="btn btn-success">Add to Cart</a>
+                
                 {% endif %}
                 <p class="card-footer">Author : <small class="text-muted">{{course.Teacher_name}}</small></p>
             

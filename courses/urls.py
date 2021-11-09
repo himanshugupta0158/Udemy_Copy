@@ -17,6 +17,7 @@ urlpatterns = [
     path("show_video/<str:title>", views.show_video, name="show_video"),
     path("course_category/", views.course_category, name="course_category"),
     path('check_user/' , views.check_user , name = "check_user"),
+    path("buy/<str:title>", views.buy, name="buy"),
 
 
     
