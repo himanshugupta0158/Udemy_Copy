@@ -1,0 +1,17 @@
+{% extends 'courses/main.html' %}
+
+
+{% block main_content %}
+
+<h2>{{video.title}}</h2> <br>
+<video class="card-img-top" width="320" height="400" controls>
+    <source src="{{video.video.url}}" type="video/mkv"> 
+    <source src="{{video.video.url}}" type="video/mp4"> 
+</video> <br>
+Description : {{video.description}} <br>
+Author : {{video.Teacher_name}} <br>
+Created on : {{video.created_on}}
+<br><br><br>
+<a href="{% url 'dashboard' %}">Go to dashboard</a>
+
+{% endblock main_content %}
