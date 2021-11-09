@@ -68,7 +68,7 @@ def cart(request):
     products = []
     try:
         for i in p:
-            products.append(Courses.objects.filter(title = i.courses))
+            products.append(Courses.objects.get(title = i.courses))
         return render(request , "courses/cart.html" , {'products':products})
     except:
         if(len(products) == 1):

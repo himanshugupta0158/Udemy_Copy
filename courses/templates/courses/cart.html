@@ -14,10 +14,12 @@
 {% for product in products %}
         <div class="col-md-4">
             <div class="card mb-2">
+            <a href="{% url 'show_video' product.title %}">
                 <video class="card-img-top" width="320" height="240" controls>
                     <source src="{{product.video.url}}" type="video/mkv"> 
                     <source src="{{product.video.url}}" type="video/mp4"> 
                 </video>
+            </a>    
                 </h5 class="card-title">{{product.title}}</h5>
                            
                 <p class="card-text">{{product.description}}</p>
