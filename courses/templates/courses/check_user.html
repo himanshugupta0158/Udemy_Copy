@@ -1,0 +1,15 @@
+{% extends 'courses/main.html' %}
+
+{% block main_content %}
+
+{% if person.profession == Teacher %}
+
+<meta http-equiv = "refresh" url = "{% url 'upload' %}" />
+{% else %}
+
+
+
+{% endif %}
+
+
+{% endblock main_content %}

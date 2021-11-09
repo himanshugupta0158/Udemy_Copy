@@ -31,6 +31,21 @@ def profile(request ):
     else:
         return render(request , "courses/dashboard.html" , {'msg' : "Error : profile cannot be displayed "})
 
+def check_user(request ):
+    n1 = None
+    try:
+        n1 = Teacher.objects.get(name = request.user.username)
+    except:
+        pass
+    try:
+        n1 = Student.objects.get(name = request.user.username)
+    except:
+        pass
+
+    if n1 != None:
+        return render(request , "courses/check_user.html" , {'person' : n1 })
+    else:
+        return render(request , "courses/dashboard.html" , {'msg' : "Error : profile cannot be displayed "})
 
 
 def transaction(request , title):
@@ -50,6 +65,7 @@ def course_category(request):
     # except:
     #     return render(request , 'courses/dashboard.html' , {'msg' : 'There is no course category exist.'})
 
+    
 
 # this is used to upload video by teacher.
 def upload_video(request):

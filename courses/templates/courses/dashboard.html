@@ -41,11 +41,11 @@
                 <p class="card-text">Price :
                     <div style="border:1px solid gray;">{{course.price}}</div>
                 </p>
-            
+                {% if user.username != course.Teacher_name %}
                 <a href="{% url 'transaction' course.title %}" class="btn btn-primary">Buy</a>
             
                 <a href="{% url 'AddToCart' course.title %}" class="btn btn-success">Add to Cart</a>
-            
+                {% endif %}
                 <p class="card-footer">Author : <small class="text-muted">{{course.Teacher_name}}</small></p>
             
                 <p class="card-footer">Created on : <small class="text-muted">{{course.created_on}}</small></p>
