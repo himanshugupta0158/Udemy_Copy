@@ -15,6 +15,7 @@ urlpatterns = [
     path('AddToCart/<str:course>' , views.AddToCart , name = "AddToCart"),
     path('transaction/<str:title>' , views.transaction , name = "transaction"),
     path("show_video/<str:title>", views.show_video, name="show_video"),
+    path("course_category/", views.course_category, name="course_category")
 
     
     

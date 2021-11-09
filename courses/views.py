@@ -43,7 +43,13 @@ def show_video(request , title):
     video = Courses.objects.get(title = title)
     return render(request , 'courses/show_video.html' , {'video' : video})
 
-    
+
+def course_category(request):
+    return render(request , 'courses/course_category.html' , {'courses' : Courses.objects.all()})
+    # except:
+    #     return render(request , 'courses/dashboard.html' , {'msg' : 'There is no course category exist.'})
+
+
 # this is used to upload video by teacher.
 def upload_video(request):
     if request.method == 'POST':

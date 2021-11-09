@@ -23,6 +23,9 @@
                 </h5 class="card-title">{{product.title}}</h5>
                            
                 <p class="card-text">{{product.description}}</p>
+
+                <p class="card-text">Category : {{product.category}}</p>
+
                 <p class="card-text">Price :<div style="border:1px solid gray;">{{product.price}}</div></p>
                 <a href="{% url 'transaction' product.title %}" class="btn btn-primary">Buy</a>
                 <p class="card-footer">Author : <small class="text-muted">{{product.Teacher_name}}</small></p>
@@ -50,8 +53,10 @@
                </h5 class="card-title">{{products.title}}</h5>
                 
                 <p class="card-text">{{products.description}}</p>
+
+                <p class="card-text">Category : {{course.category}}</p>
                 <p class="card-text">Price :<div style="border:1px solid gray;">{{products.price}}</div></p>
-                <a href="#" class="btn btn-primary">Buy</a>
+                <a href="{% url 'transaction' product.title %}" class="btn btn-primary">Buy</a>
                 <p class="card-footer">Author : <small class="text-muted">{{products.Teacher_name}}</small></p>
                 <p class="card-footer">Created on : <small class="text-muted">{{products.created_on}}</small></p>
 
