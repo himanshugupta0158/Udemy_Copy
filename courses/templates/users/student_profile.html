@@ -8,11 +8,11 @@
 {% if user.username %}
 Welcome , Mr.{{user.username}}
 {% endif %}
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="text" name="name" value="{{user.username}}" > <br>
     <input type="text" name="Email_address" value="{{user.email}}"> <br>
-    Profile pic : <input type="file" name="profile_pic" action="/*"> <br>
+    Profile pic : <input type="file" name="profile_pic" action="image/*"> <br>
     <input type="text" name="gender" placeholder="Your gender"> <br>
     <button type="submit" class="btn btn-success">submit</button>
 </form>

@@ -5,6 +5,7 @@ from django.urls import reverse
 from courses.forms import CustomUserCreationForm , UserManager
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
+from django.core.files.storage import FileSystemStorage
 # Create your views here.
 
 # this is Dashboard function to show all the video
@@ -54,7 +55,9 @@ def course_category(request):
 def upload_video(request):
     if request.method == 'POST':
         title = request.POST['title']
-        video = request.POST['video']
+        video = request.FILES['video']
+        fss = FileSystemStorage()
+        fss.save(video.name , video)
         description = request.POST['description']
         category = request.POST['category']
         author_name = request.POST['author']
@@ -99,7 +102,9 @@ def student_profile(request):
     if request.method == "POST" : 
         name = request.POST['name']
         Email_address = request.POST['Email_address']
-        pic = request.POST['profile_pic']
+        pic = request.FILES['profile_pic']
+        fss = FileSystemStorage()
+        fss.save(pic.name , pic)    
         gender = request.POST['gender']
         std = Student(name = name , profile_pic = pic , gender = gender ,profession = 'Student' ,  Email_address = Email_address)
         std.save()
@@ -113,7 +118,9 @@ def teacher_profile(request):
     if request.method == "POST" : 
         name = request.POST['name']
         Email_address = request.POST['Email_address']
-        pic = request.POST['profile_pic']
+        pic = request.FILES['profile_pic']
+        fss = FileSystemStorage()
+        fss.save(pic.name , pic)
         gender = request.POST['gender']
         skills = request.POST['skills']
         teacher = Teacher(name = name , profile_pic = pic , Email_address = Email_address , gender = gender , profession = 'Teacher', skills = skills)
