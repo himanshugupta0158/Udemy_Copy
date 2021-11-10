@@ -16,6 +16,22 @@
     <a href="{% url 'teacher_profile' %}">Create teacher Profile</a><br>
     {% endif %}
 
+
+
+{% comment %} <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4 center">
+            <div class="embed-responsive embed-responsive-16by9">
+                <video class="embed-responsive-item" width="320" height="240" controls>
+                    <source src="{{course.video.url}}" type="video/mkv"> 
+                    <source src="{{course.video.url}}" type="video/mp4"> 
+                 </video>
+            </div>
+        </div>
+    </div>
+</div> {% endcomment %}
+
+
 {% comment %} <br>
     {% for i in buyed %}
     Buyed courses Name : {{i}} <br>
@@ -25,28 +41,25 @@
     
     <h1>All Courses</h1>
     
-    <div class="row">
-    
+    <div class="row row-cols-1 row-cols-md-3">
         {% for course in courses %}
+    <div class="col mb-4">
     
-        <div class="col-md-4">
+         <div class="card">
     
-            <div class="card mb-2">
-            
-            <a href="{% url 'show_video' course.title %}">
-
-                <video class="card-img-top" width="320" height="240" controls>
+            <div class="view overlay">
+                <video class="card-img-top" width="320" height="240"  controls >
                     <source src="{{course.video.url}}" type="video/mkv"> 
                     <source src="{{course.video.url}}" type="video/mp4"> 
                  </video>
-            
-            </a>
-            
-                </h5 class="card-title">{{course.title}}</h5>
-            
-                <p class="card-text">{{course.description}}</p>
 
-                <p class="card-text">Category : {{course.category}}</p>
+            <a href="{% url 'show_video' course.title %}">
+          <div class="mask rgba-white-slight"></div>
+            </a>
+            </div>
+            
+            <div class="card-body">
+                </h5 class="card-title">{{course.title}}</h5>
 
                 <p class="card-text">Price :
                     <div style="border:1px solid gray;">{{course.price}}</div>
@@ -67,13 +80,12 @@
                 <p class="card-footer">Created on : <small class="text-muted">{{course.created_on}}</small></p>
 
             </div>
+
+</div>
         </div>
-    </div>
     {% endfor %}
 
 </div>
-</div>
-
 {% else %}
 <br><a href="{% url 'dashboard' %}">Back to dashboard</a>
 {% endif %}

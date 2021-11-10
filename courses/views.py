@@ -21,18 +21,19 @@ def dashboard(request):
 
 # this one show profile for currently logged in user it can be either student or teacher.
 def profile(request ):
+    profession = 'Teacher'
     n1 = None
     try:
         n1 = Teacher.objects.get(name = request.user.username)
     except:
-        pass
+        profession = 'Student'
     try:
         n1 = Student.objects.get(name = request.user.username)
     except:
-        pass
+        profession = 'Teacher'
 
     if n1 != None:
-        return render(request , "courses/profile.html" , {'person' : n1 })
+        return render(request , "courses/profile.html" , {'person' : n1 , 'profession' : profession})
     else:
         return render(request , "courses/dashboard.html" , {'msg' : "Error : profile cannot be displayed "})
 
@@ -125,12 +126,28 @@ def cart(request , name):
 # this function add cart by clicking "Add to cart" button
 def AddToCart(request ,course):
     Cart(courses = course , name = request.user.username).save()
-    return render(request , 'courses/dashboard.html' , {'msg' : 'Course have been added to the cart'})
+    l = set()
+    course = set()
+    buyed = Buy.objects.all()
+    for i in buyed :
+        if request.user.username == i.buyer:
+            l.add(i.course)
+    for i in Cart.objects.filter(name = request.user.username):
+        course.add(Courses.objects.get(title = i.courses))
+    return render(request , 'courses/dashboard.html' , {'courses' : course, 'buyed' : l , 'msg' : 'Course have been added to the cart'})
 
 
 def DeleteFromCart(request , course):
     Cart.objects.filter(courses = course).delete()
-    return render(request , 'courses/cart.html' , {'msg' : 'Course have been removed from the cart'})
+    l = set()
+    course = set()
+    buyed = Buy.objects.all()
+    for i in buyed :
+        if request.user.username == i.buyer:
+            l.add(i.course)
+    for i in Cart.objects.filter(name = request.user.username):
+        course.add(Courses.objects.get(title = i.courses))
+    return render(request , 'courses/cart.html' , {'courses' : course, 'buyed' : l , 'msg' : 'Course have been removed form the cart'})
 
 """
 Note : Both student_profile and teacher_profile function automatically invokes
