@@ -8,6 +8,60 @@
 {% if user.username %}
 Welcome , Mr.{{user.username}}
 {% endif %}
+
+<!-- Material form register -->
+<div class="card">
+
+    <h5 class="card-header info-color white-text text-center py-4">
+        <strong>Create Student Profile</strong>
+    </h5>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+
+        <!-- Form -->
+        <form class="text-center" style="color: #757575;" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col">
+                    <!-- name -->
+                    <div class="md-form">
+                        <label for="materialRegisterFormFirstName">User Name</label>
+                        <input type="text" id="materialRegisterFormFirstName" class="form-control" name="name" value="{{user.username}}" >
+                    </div>
+                </div>
+
+            <!-- E-mail -->
+            <div class="md-form mt-0">
+                <label for="materialRegisterFormEmail">E-mail</label>
+                <input type="text" id="materialRegisterFormEmail" class="form-control" name="Email_address" value="{{user.email}}">
+            </div>
+
+                <div class="col">
+                    <!-- Last name -->
+                    <div class="md-form">
+                        <label for="materialRegisterFormLastName">Gender</label>
+                    <input type="text" id="materialRegisterFormLastName" class="form-control" name="gender" placeholder="Your gender"> <br>
+                    </div>
+                </div>
+            </div>
+
+            Profile pic : <input type="file" name="profile_pic" action="image/*">
+
+            <!-- Sign up button -->
+            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Submit</button>
+
+
+        </form>
+        <!-- Form -->
+
+    </div>
+
+</div>
+<!-- Material form register -->
+
+{% comment %} 
+
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="text" name="name" value="{{user.username}}" > <br>
@@ -15,7 +69,7 @@ Welcome , Mr.{{user.username}}
     Profile pic : <input type="file" name="profile_pic" action="image/*"> <br>
     <input type="text" name="gender" placeholder="Your gender"> <br>
     <button type="submit" class="btn btn-success">submit</button>
-</form>
+</form> {% endcomment %}
 
 
 {% endblock content %}

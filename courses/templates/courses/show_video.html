@@ -2,6 +2,7 @@
 
 
 {% block main_content %}
+<div class="container">
 
 <h2>{{video.title}}</h2> <br>
 <div class="embed-responsive embed-responsive-21by9">
@@ -10,10 +11,11 @@
     <source src="{{video.video.url}}" type="video/mp4"> 
 </video>
 </div> <br>
+
 Description : {{video.description}} <br>
 Author : {{video.Teacher_name}} <br>
 Created on : {{video.created_on}}
 <br><br><br>
 <a href="{% url 'dashboard' %}">Go to dashboard</a>
-
+</div>
 {% endblock main_content %}

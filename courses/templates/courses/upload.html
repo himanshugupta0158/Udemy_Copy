@@ -1,61 +1,49 @@
 {% extends "courses/main.html" %} {% block main_content %}
-<form method="POST" enctype="multipart/form-data">
+<div class="container">
+<!-- Default form contact -->
 
+
+<form class="text-center border border-light p-5" method="POST" enctype="multipart/form-data">
 {% csrf_token %}
+    <p class="h4 mb-4">Upload Course</p>
 
- <div class="input-group mb-3">
-    <div class="input-group-prepend">
- <span class="input-group-text">Video Title</span>
-    </div>
-    <input type="text" name="title" placeholder="Enter Video Title here">
-  </div>
+    <!-- Name -->
+    <input hidden type="text" id="defaultContactFormName" class="form-control mb-4" name="author" value="{{user.username}}">
 
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
- <span class="input-group-text">Video description</span>
-    </div>
-    <input type="text" name="description"  placeholder="Description of content">
-  </div>
+    <input type="text" id="defaultContactFormName" class="form-control mb-4" name="title" placeholder="Enter Video Title here">
 
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
- <span class="input-group-text">Video Category</span>
-    </div>
-    {% comment %} <input type="text" name="category" placeholder="Category of content"> {% endcomment %}
-    <select name="category" >
-        <option selected>Choose...</option>
+    <!-- Email -->
+    <input type="text" id="defaultContactFormEmail" class="form-control mb-4" name="description"  placeholder="Description of content">
+
+    <!-- Subject -->
+
+  <select name="category" class="browser-default custom-select mb-4">
+        <option selected>Select Category Of Video</option>
         <option>Python</option>
         <option>Java</option>
         <option>Kotlin</option>
         <option>Other</option>
       </select>
+
+    <input type="number" id="defaultContactFormEmail" class="form-control mb-4" name="price" placeholder="price of video">
+
+
+  <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroupFileAddon01">Upload Course</span>
   </div>
-
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
- <span class="input-group-text">Author Name</span>
-    </div>
-    <input type="text" name="author" value="{{user.username}}">
+  <div class="custom-file">
+    <input type="file" name="video" accept="/video/*" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" >
+    <label class="custom-file-label" for="inputGroupFile01" style="text-align:center;">Choose Course Video</label>
   </div>
+</div>
 
-
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
- <span class="input-group-text">Price</span>
-    </div>
-    <input type="number" name="price" placeholder="price of video">
-  </div>
-
-<div class="custom-file">
-    <input type="file" name="video" accept="/video/*" class="custom-file-input" id="customFile" > <br>
-    <label class="custom-file-label" for="customFile">Choose file</label>
-  </div>
-
-  
+<br>
+    <!-- Upload button -->
     <button type="submit" class="btn btn-success"> Upload New Video </button>
 
 </form>
+<!-- Default form contact -->
 
-</script>
-
+</div>
 {% endblock %}
