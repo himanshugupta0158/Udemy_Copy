@@ -48,19 +48,23 @@
          <div class="card">
     
             <div class="view overlay">
-                <video class="card-img-top" width="320" height="240"  controls >
+                <video class="card-img-top" width="320" height="240" >
                     <source src="{{course.video.url}}" type="video/mkv"> 
                     <source src="{{course.video.url}}" type="video/mp4"> 
                  </video>
-
+            
+            {% if user.is_authenticated %}
             <a href="{% url 'show_video' course.title %}">
           <div class="mask rgba-white-slight"></div>
             </a>
+            {% endif %}
             </div>
             
             <div class="card-body">
                 </h5 class="card-title">{{course.title}}</h5>
 
+                {% if user.is_authenticated %}
+                
                 <p class="card-text">Price :
                     <div style="border:1px solid gray;">{{course.price}}</div>
                 </p>
@@ -75,6 +79,9 @@
                 <a href="{% url 'AddToCart' course.title %}" class="btn btn-success">Add to Cart</a>
                 
                 {% endif %}
+                
+                {% endif %}
+                
                 <p class="card-footer">Author : <small class="text-muted">{{course.Teacher_name}}</small></p>
             
                 <p class="card-footer">Created on : <small class="text-muted">{{course.created_on}}</small></p>

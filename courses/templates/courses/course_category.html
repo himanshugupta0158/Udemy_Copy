@@ -1,173 +1,214 @@
 {% extends 'courses/main.html' %}
 
 {% block main_content %}
+<div class="container">
+
 
 <h2 style="border:1px solid black;text-align:center;">Kotlin</h2>
-{% for course in courses %}
+    
+    <div class="row row-cols-1 row-cols-md-3">
+        {% for course in courses %}
+        {% if course.category == 'Kotlin' %}
 
-{% if course.category == 'Kotlin' %}
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card mb-2">
-            <a href="{% url 'show_video' course.title %}">
-                <video class="card-img-top" width="320" height="240" controls>
+    <div class="col mb-4">
+    
+         <div class="card">
+    
+            <div class="view overlay">
+                <video class="card-img-top" width="320" height="240"  controls >
                     <source src="{{course.video.url}}" type="video/mkv"> 
                     <source src="{{course.video.url}}" type="video/mp4"> 
-                </video>
-            </a>
-               </h5 class="card-title">{{course.title}}</h5>
-                
-                <p class="card-text">{{course.description}}</p>
+                 </video>
 
-                <p class="card-text">Category : {{course.category}}</p>
-                
-                <p class="card-text">Price :<div style="border:1px solid gray;">{{course.price}}</div></p>
+            <a href="{% url 'show_video' course.title %}">
+          <div class="mask rgba-white-slight"></div>
+            </a>
+            </div>
+            
+            <div class="card-body">
+                </h5 class="card-title">{{course.title}}</h5>
+
+                <p class="card-text">Price :
+                    <div style="border:1px solid gray;">{{course.price}}</div>
+                </p>
                 {% if user.username != course.Teacher_name %}
+
                 {% if course.title in buyed %}
             
                 {% else %}
-                <a href="{% url 'transaction' course.title %}" class="btn btn-primary">Buy</a>
+                <a href="{% url 'buy' course.title %}" class="btn btn-primary">Buy</a>
                 {% endif %}
-
-                <a href="{% url 'AddToCart' course.title %}" class="btn btn-success">Add to Cart</a>                
+                
+                <a href="{% url 'AddToCart' course.title %}" class="btn btn-success">Add to Cart</a>
+                
                 {% endif %}
                 <p class="card-footer">Author : <small class="text-muted">{{course.Teacher_name}}</small></p>
+            
                 <p class="card-footer">Created on : <small class="text-muted">{{course.created_on}}</small></p>
 
             </div>
-        </div>
-    </div>
-</div>
-</div>
-{% endif %}
 
-{% endfor %}
+</div>
+        </div>
+        {% endif %}
+    {% endfor %}
+
+</div>
+
 
 <h2 style="border:1px solid black;text-align:center;">Java</h2>
-{% for course in courses %}
+    
+    <div class="row row-cols-1 row-cols-md-3">
+        {% for course in courses %}
+        {% if course.category == 'Java' %}
 
-{% if course.category == 'Java' %}
-
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card mb-2">
-            <a href="{% url 'show_video' course.title %}">
-                <video class="card-img-top" width="320" height="240" controls>
+    <div class="col mb-4">
+    
+         <div class="card">
+    
+            <div class="view overlay">
+                <video class="card-img-top" width="320" height="240"  controls >
                     <source src="{{course.video.url}}" type="video/mkv"> 
                     <source src="{{course.video.url}}" type="video/mp4"> 
-                </video>
-            </a>
-               </h5 class="card-title">{{course.title}}</h5>
-                
-                <p class="card-text">{{course.description}}</p>
+                 </video>
 
-                <p class="card-text">Category : {{course.category}}</p>
-                
-                <p class="card-text">Price :<div style="border:1px solid gray;">{{course.price}}</div></p>
+            <a href="{% url 'show_video' course.title %}">
+          <div class="mask rgba-white-slight"></div>
+            </a>
+            </div>
+            
+            <div class="card-body">
+                </h5 class="card-title">{{course.title}}</h5>
+
+                <p class="card-text">Price :
+                    <div style="border:1px solid gray;">{{course.price}}</div>
+                </p>
                 {% if user.username != course.Teacher_name %}
+
                 {% if course.title in buyed %}
             
                 {% else %}
-                <a href="{% url 'transaction' course.title %}" class="btn btn-primary">Buy</a>
+                <a href="{% url 'buy' course.title %}" class="btn btn-primary">Buy</a>
                 {% endif %}
+                
                 <a href="{% url 'AddToCart' course.title %}" class="btn btn-success">Add to Cart</a>
+                
                 {% endif %}
                 <p class="card-footer">Author : <small class="text-muted">{{course.Teacher_name}}</small></p>
+            
                 <p class="card-footer">Created on : <small class="text-muted">{{course.created_on}}</small></p>
 
             </div>
-        </div>
-    </div>
-</div>
-</div>
-{% endif %}
 
-{% endfor %}
+</div>
+        </div>
+        {% endif %}
+    {% endfor %}
+
+</div>
 
 <h2 style="border:1px solid black;text-align:center;">Python</h2>
-{% for course in courses %}
+    
+    <div class="row row-cols-1 row-cols-md-3">
+        {% for course in courses %}
+        {% if course.category == 'Python' %}
 
-{% if course.category == 'Python' %}
-
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card mb-2">
-            <a href="{% url 'show_video' course.title %}">
-                <video class="card-img-top" width="320" height="240" controls>
+    <div class="col mb-4">
+    
+         <div class="card">
+    
+            <div class="view overlay">
+                <video class="card-img-top" width="320" height="240"  controls >
                     <source src="{{course.video.url}}" type="video/mkv"> 
                     <source src="{{course.video.url}}" type="video/mp4"> 
-                </video>
-            </a>
-               </h5 class="card-title">{{course.title}}</h5>
-                
-                <p class="card-text">{{course.description}}</p>
+                 </video>
 
-                <p class="card-text">Category : {{course.category}}</p>
-                
-                <p class="card-text">Price :<div style="border:1px solid gray;">{{course.price}}</div></p>
+            <a href="{% url 'show_video' course.title %}">
+          <div class="mask rgba-white-slight"></div>
+            </a>
+            </div>
+            
+            <div class="card-body">
+                </h5 class="card-title">{{course.title}}</h5>
+
+                <p class="card-text">Price :
+                    <div style="border:1px solid gray;">{{course.price}}</div>
+                </p>
                 {% if user.username != course.Teacher_name %}
+
                 {% if course.title in buyed %}
             
                 {% else %}
-                <a href="{% url 'transaction' course.title %}" class="btn btn-primary">Buy</a>
+                <a href="{% url 'buy' course.title %}" class="btn btn-primary">Buy</a>
                 {% endif %}
+                
                 <a href="{% url 'AddToCart' course.title %}" class="btn btn-success">Add to Cart</a>
+                
                 {% endif %}
                 <p class="card-footer">Author : <small class="text-muted">{{course.Teacher_name}}</small></p>
+            
                 <p class="card-footer">Created on : <small class="text-muted">{{course.created_on}}</small></p>
 
             </div>
-        </div>
-    </div>
-</div>
-</div>
-{% endif %}
 
-{% endfor %}
+</div>
+        </div>
+        {% endif %}
+    {% endfor %}
+
+</div>
 
 
 <h2 style="border:1px solid black;text-align:center;">Other</h2>
-{% for course in courses %}
+    <div class="row row-cols-1 row-cols-md-3">
+        {% for course in courses %}
+        {% if course.category == 'Other' %}
 
-{% if course.category == 'Other' %}
-
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card mb-2">
-            <a href="{% url 'show_video' course.title %}">
-                <video class="card-img-top" width="320" height="240" controls>
+    <div class="col mb-4">
+    
+         <div class="card">
+    
+            <div class="view overlay">
+                <video class="card-img-top" width="320" height="240"  controls >
                     <source src="{{course.video.url}}" type="video/mkv"> 
                     <source src="{{course.video.url}}" type="video/mp4"> 
-                </video>
-            </a>
-               </h5 class="card-title">{{course.title}}</h5>
-                
-                <p class="card-text">{{course.description}}</p>
+                 </video>
 
-                <p class="card-text">Category : {{course.category}}</p>
-                
-                <p class="card-text">Price :<div style="border:1px solid gray;">{{course.price}}</div></p>
+            <a href="{% url 'show_video' course.title %}">
+          <div class="mask rgba-white-slight"></div>
+            </a>
+            </div>
+            
+            <div class="card-body">
+                </h5 class="card-title">{{course.title}}</h5>
+
+                <p class="card-text">Price :
+                    <div style="border:1px solid gray;">{{course.price}}</div>
+                </p>
                 {% if user.username != course.Teacher_name %}
-                
+
                 {% if course.title in buyed %}
             
                 {% else %}
-                <a href="{% url 'transaction' course.title %}" class="btn btn-primary">Buy</a>
+                <a href="{% url 'buy' course.title %}" class="btn btn-primary">Buy</a>
                 {% endif %}
-
+                
                 <a href="{% url 'AddToCart' course.title %}" class="btn btn-success">Add to Cart</a>
+                
                 {% endif %}
                 <p class="card-footer">Author : <small class="text-muted">{{course.Teacher_name}}</small></p>
+            
                 <p class="card-footer">Created on : <small class="text-muted">{{course.created_on}}</small></p>
 
             </div>
+
+</div>
         </div>
-    </div>
+        {% endif %}
+    {% endfor %}
+
 </div>
+
+
 </div>
-{% endif %}
-
-{% endfor %}
-
-
 {% endblock main_content %}
