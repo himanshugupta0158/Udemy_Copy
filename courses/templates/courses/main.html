@@ -33,7 +33,7 @@
             <a class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'upload' %}" role="tab" aria-controls="Upload Courses" aria-selected="false">Upload Courses</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'cart' %}" role="tab" aria-controls="logout" aria-selected="false">Cart</a>
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'cart' user.username %}" role="tab" aria-controls="logout" aria-selected="false">Cart</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'password_change' %}" role="tab" aria-controls="Change Password" aria-selected="false">Change Password</a>

@@ -4,10 +4,12 @@
 {% block main_content %}
 
 <h2>{{video.title}}</h2> <br>
+<div class="embed-responsive embed-responsive-21by9">
 <video class="card-img-top" width="320" height="400" controls>
     <source src="{{video.video.url}}" type="video/mkv"> 
     <source src="{{video.video.url}}" type="video/mp4"> 
-</video> <br>
+</video>
+</div> <br>
 Description : {{video.description}} <br>
 Author : {{video.Teacher_name}} <br>
 Created on : {{video.created_on}}

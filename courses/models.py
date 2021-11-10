@@ -30,7 +30,7 @@ class Buy(models.Model):
 
 class Cart(models.Model):
     courses = models.CharField(max_length = 150)
-    std_name = models.CharField(max_length = 150)
+    name = models.CharField(max_length = 150)
 
 
 

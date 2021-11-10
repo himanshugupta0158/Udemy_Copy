@@ -16,10 +16,10 @@
     <a href="{% url 'teacher_profile' %}">Create teacher Profile</a><br>
     {% endif %}
 
-<br>
+{% comment %} <br>
     {% for i in buyed %}
     Buyed courses Name : {{i}} <br>
-    {% endfor %}
+    {% endfor %} {% endcomment %}
 
     {% if courses %}
     
@@ -65,7 +65,6 @@
                 <p class="card-footer">Author : <small class="text-muted">{{course.Teacher_name}}</small></p>
             
                 <p class="card-footer">Created on : <small class="text-muted">{{course.created_on}}</small></p>
-
 
             </div>
         </div>

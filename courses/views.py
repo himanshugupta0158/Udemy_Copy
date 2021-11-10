@@ -11,11 +11,11 @@ from django.core.files.storage import FileSystemStorage
 # this is Dashboard function to show all the video
 def dashboard(request):
     course = Courses.objects.all()
-    l = []
+    l = set()
     buyed = Buy.objects.all()
     for i in buyed :
         if request.user.username == i.buyer:
-            l.append(i.course)
+            l.add(i.course)
     return render(request , 'courses/dashboard.html' , {'courses' : course , 'buyed' : l})
    
 
@@ -103,29 +103,34 @@ def upload_video(request):
         return render(request,'courses/dashboard.html' , {'msg' : msg})
     return render(request , 'courses/upload.html')
 
+
+
+
 # this shows the data of the cart if it exist.
 # In this i used try-catch b/c it was showing error that Cart is not a iterator.
-def cart(request):
-    p = Cart.objects.filter(std_name = request.user.username)
-    products = []
-    try:
-        for i in p:
-            products.append(Courses.objects.get(title = i.courses))
-        return render(request , "courses/cart.html" , {'products':products})
-    except:
-        if(len(products) == 1):
-            return render(request , "courses/cart.html" , {'products':Courses.objects.get(title = p[0].courses) , 'msg' : 'single'})
-        else:
-            return render(request , "courses/cart.html" , {'msg':"There is no items in your cart."})
+def cart(request , name):
+    l = set()
+    course = set()
+    buyed = Buy.objects.all()
+    for i in buyed :
+        if request.user.username == i.buyer:
+            l.add(i.course)
+    for i in Cart.objects.filter(name = name ):
+        course.add(Courses.objects.get(title = i.courses))
+    return render(request , 'courses/cart.html' , {'courses' : course, 'buyed' : l})
+
 
 
 
 # this function add cart by clicking "Add to cart" button
 def AddToCart(request ,course):
-    Cart(courses = course , std_name = request.user.username).save()
+    Cart(courses = course , name = request.user.username).save()
     return render(request , 'courses/dashboard.html' , {'msg' : 'Course have been added to the cart'})
 
 
+def DeleteFromCart(request , course):
+    Cart.objects.filter(courses = course).delete()
+    return render(request , 'courses/cart.html' , {'msg' : 'Course have been removed from the cart'})
 
 """
 Note : Both student_profile and teacher_profile function automatically invokes
