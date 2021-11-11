@@ -46,12 +46,6 @@ def buy(request , title):
 
 
 
-def transaction(request , title):
-    try:
-        return render(request , 'courses/transaction.html' , {'product' : Courses.objects.get(title = title)})
-    except:
-        return render(request , "courses/dashboard.html" , {'msg' : "Error : transaction failed "})
-
 
 def show_video(request , title):
     video = Courses.objects.get(title = title)
