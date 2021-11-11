@@ -20,6 +20,7 @@
         .udemy {
             color: red;
             border: 1px solid gray;
+            font-weight: 400;
         }
     </style>
 </head>
@@ -63,6 +64,16 @@
         {% endif %}
     </ul>
     <h1 class="udemy" align="center">Udemy</h1>
-    {% block main_content %} {% endblock main_content %}</body>
+    {% block main_content %} {% endblock main_content %}
+    <footer>
+        <hr style="background-color:blue;">
+
+        <ul class="list-unstyled d-flex justify-content-center mt-4">
+            <li><a href="#"><i class="fab fa-facebook-f px-3 h4 text-info"></i></a></li>
+            <li><a href="#"><i class="fab fa-youtube px-3 h4 text-info"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter px-3 h4 text-info"></i></a></li>
+        </ul>
+    </footer>
+</body>
 
 </html>

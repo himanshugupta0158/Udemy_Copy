@@ -37,23 +37,6 @@ def profile(request ):
     else:
         return render(request , "courses/dashboard.html" , {'msg' : "Error : profile cannot be displayed "})
 
-def check_user(request ):
-    n1 = None
-    try:
-        n1 = Teacher.objects.get(name = request.user.username)
-    except:
-        pass
-    try:
-        n1 = Student.objects.get(name = request.user.username)
-    except:
-        pass
-
-    if n1 != None:
-        return render(request , "courses/check_user.html" , {'person' : n1 })
-    else:
-        return render(request , "courses/dashboard.html" , {'msg' : "Error : profile cannot be displayed "})
-
-
 def buy(request , title):
     try:
         Buy(buyer = request.user.username , course = title).save()
@@ -76,16 +59,25 @@ def show_video(request , title):
 
 
 def course_category(request):
-    l = []
+    l = set()
     buyed = Buy.objects.all()
     for i in buyed :
         if request.user.username == i.buyer:
-            l.append(i.course)
+            l.add(i.course)
     return render(request , 'courses/course_category.html' , {'courses' : Courses.objects.all() ,'buyed' : l })
     # except:
     #     return render(request , 'courses/dashboard.html' , {'msg' : 'There is no course category exist.'})
 
-    
+
+def show_selected_category(request , category):  
+    l = set()
+    buyed = Buy.objects.all()
+    for i in buyed :
+        if request.user.username == i.buyer:
+            l.add(i.course)
+    return render(request , 'courses/selected_category.html' , {'courses' : Courses.objects.all(),'category' : category,'buyed' : l}) 
+
+
 
 # this is used to upload video by teacher.
 def upload_video(request):
@@ -103,6 +95,24 @@ def upload_video(request):
         msg = "video uploaded successfully"
         return render(request,'courses/dashboard.html' , {'msg' : msg})
     return render(request , 'courses/upload.html')
+
+
+def check_user(request):
+    profession = 'Teacher'
+    n1 = None
+    try:
+        n1 = Teacher.objects.get(name = request.user.username)
+    except:
+        profession = 'Student'
+    try:
+        n1 = Student.objects.get(name = request.user.username)
+    except:
+        profession = 'Teacher'
+
+    if n1 != None and profession == 'Teacher' :
+        return upload_video(request)
+    else:
+        return render(request , "courses/dashboard.html" , {'msg' : "Student have no access to the Upload Courses."})
 
 
 

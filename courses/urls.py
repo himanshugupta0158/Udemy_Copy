@@ -4,7 +4,7 @@ from courses import views
 urlpatterns = [
 
     path('',views.dashboard,name="dashboard"),
-    path('upload/',views.upload_video,name="upload"),
+    path('upload/',views.check_user,name="upload"),
     path('accounts/' , include("django.contrib.auth.urls")),
     path('register/',views.register , name="register"),
     path('register_staff/',views.register_staff , name="register_staff"),
@@ -19,6 +19,7 @@ urlpatterns = [
     path('check_user/' , views.check_user , name = "check_user"),
     path("buy/<str:title>", views.buy, name="buy"),
     path('DeleteFromCart/<str:course>', views.DeleteFromCart , name = "DeleteFromCart"),
+    path("selected_category/<str:category>", views.show_selected_category, name="selected_category"),
 
 
     

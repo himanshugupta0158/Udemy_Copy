@@ -1,14 +1,16 @@
 {% extends 'courses/main.html' %} {% load static %} {% block main_content %}
 <div class="container">
 
-    Hello , {{ user.username | default:_("Guest")}}
-    
+   <h3 style="font-weight:bold;"> Hello , <strong style="color:blue;">{{ user.username | default:_("Guest")}} </strong> </h3>
+    <hr>
     {% if user.username == 'admin' %}
         <a href="{% url 'login' %}">Login as User</a>
     {% endif %}
 
     {% if msg %}
-    <h2>{{msg}}</h2>
+    <hr>
+    <h2>Alert : {{msg}}</h2>
+    <hr>
     {% endif %}
     {% if msg == "Error : profile cannot be displayed " %} <br>
     <h3>You are seeing this because you have not created you profile.</h3> <br>
@@ -37,10 +39,36 @@
     Buyed courses Name : {{i}} <br>
     {% endfor %} {% endcomment %}
 
+
+<div class="border border-info">
+    <div class="container">
+    <h3 class="font-weight-bold mt-4">Course Categories</h3>
+        <hr class="badge-primary">
+        <div class="d-flex">
+         <div class="p-2">
+              <a href="{% url 'selected_category' 'Python' %}" class="btn btn-primary">Python</a>
+        </div>
+
+        <div class="p-2">            
+            <a href="{% url 'selected_category' 'Java' %}" class="btn btn-primary">Java</a>
+        </div>
+
+        <div class="p-2">            
+            <a href="{% url 'selected_category' 'Kotlin' %}" class="btn btn-primary">Kotlin</a>
+        </div>
+
+        <div class="p-2">            
+            <a href="{% url 'selected_category' 'Other' %}" class="btn btn-primary">Other</a>
+        </div>
+
+        </div>
+    </div>
+</div>
+
     {% if courses %}
-    
+    <hr>
     <h1>All Courses</h1>
-    
+    <hr>
     <div class="row row-cols-1 row-cols-md-3">
         {% for course in courses %}
     <div class="col mb-4">
@@ -96,4 +124,8 @@
 {% else %}
 <br><a href="{% url 'dashboard' %}">Back to dashboard</a>
 {% endif %}
+
+
 {% endblock %}
+
+
