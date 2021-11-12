@@ -1,7 +1,7 @@
 {% extends 'courses/main.html' %} {% block main_content %}
 <div class="container">
 
-    {% if msg %} {{msg}} <br> {% endif %} {% if courses %}
+    {% if msg %} <h4 style="color:blue;">Message : {{msg}}<h4>{% endif %} {% if courses %}
     <hr>
     <h1>Courses in cart <a href="{% url 'DeleteAllFromCart' %}" class="btn btn-danger" style="margin-left: 60%;">Remove All</a></h1>
     <hr>
