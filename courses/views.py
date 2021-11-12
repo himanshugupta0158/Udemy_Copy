@@ -249,4 +249,4 @@ def register_staff(request):
             msg = "Signin successfully"
             return redirect('teacher_profile')
         else:
-            return render(request , "users/register_staff.html" , {'msg' : "Invalid input in password or email!"})
+            return render(request , "users/register_staff.html" , {'msg' : "password mismatched :  password and confirm password do not match!"})

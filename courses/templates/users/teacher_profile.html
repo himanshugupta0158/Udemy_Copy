@@ -1,11 +1,4 @@
-{% extends 'courses/base.html' %}
-
-
-
-{% block content %}
-{% if user.username %}
-Welcome , Mr.{{user.username}}
-{% endif %}
+{% extends 'courses/base.html' %} {% block content %} {% if user.username %} Welcome , Mr.{{user.username}} {% endif %}
 
 <!-- Material form register -->
 <div class="card">
@@ -25,36 +18,35 @@ Welcome , Mr.{{user.username}}
                     <!-- name -->
                     <div class="md-form">
                         <label for="materialRegisterFormFirstName">User Name</label>
-                        <input type="text" id="materialRegisterFormFirstName" class="form-control" name="name" value="{{user.username}}" >
+                        <input type="text" id="materialRegisterFormFirstName" class="form-control" name="name" value="{{user.username}}" required>
                     </div>
                 </div>
 
-            <!-- E-mail -->
-            <div class="md-form mt-0">
-                <label for="materialRegisterFormEmail">E-mail</label>
-                <input type="text" id="materialRegisterFormEmail" class="form-control" name="Email_address" value="{{user.email}}">
-            </div>
+                <!-- E-mail -->
+                <div class="md-form mt-0">
+                    <label for="materialRegisterFormEmail">E-mail</label>
+                    <input type="text" id="materialRegisterFormEmail" class="form-control" name="Email_address" value="{{user.email}}" required>
+                </div>
 
                 <div class="col">
                     <!-- Last name -->
                     <div class="md-form">
                         <label for="materialRegisterFormLastName">Gender</label>
-                    <input type="text" id="materialRegisterFormLastName" class="form-control" name="gender" placeholder="Your gender">
+                        <input type="text" id="materialRegisterFormLastName" class="form-control" name="gender" placeholder="Your gender" required>
                     </div>
                 </div>
             </div>
 
-                    <div class="md-form">
-                    <label for="materialRegisterFormLastName">Skills</label>
-                    <input type="text" id="materialRegisterFormLastName" class="form-control" name="skills" placeholder="Enter your skills">
-                    </div>
-                    <br>
-                    <div class="md-form">
-                    <label for="materialRegisterFormLastName">Profile Picture</label>
-                    <input type="file" id="materialRegisterFormLastName" class="form-control" name="profile_pic" action="image/*">
-                    </div>
-                    <br>
-            {% comment %} Profile pic : <input type="file" name="profile_pic" action="image/*"> {% endcomment %}
+            <div class="md-form">
+                <label for="materialRegisterFormLastName">Skills</label>
+                <input type="text" id="materialRegisterFormLastName" class="form-control" name="skills" placeholder="Enter your skills" required>
+            </div>
+            <br>
+            <div class="md-form">
+                <label for="materialRegisterFormLastName">Profile Picture</label>
+                <input type="file" id="materialRegisterFormLastName" class="form-control" name="profile_pic" action="image/*" required>
+            </div>
+            <br>
 
             <!-- Sign up button -->
             <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Submit</button>
@@ -67,15 +59,12 @@ Welcome , Mr.{{user.username}}
 
 </div>
 
-{% comment %} 
+{% comment %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="text" name="name" value="{{user.username}}" > <br>
-    <input type="text" name="Email_address" value="{{user.email}}"> <br>
-    Profile pic : <input type="file" name="profile_pic" action="image/*"> <br>
+    <input type="text" name="name" value="{{user.username}}"> <br>
+    <input type="text" name="Email_address" value="{{user.email}}"> <br> Profile pic : <input type="file" name="profile_pic" action="image/*"> <br>
     <input type="text" name="gender" placeholder="Your gender"> <br>
     <input type="text" name="skills" placeholder="Enter your skills"> <br>
     <button type="submit" class="btn btn-success">submit</button>
-</form> {% endcomment %}
-
-{% endblock content %}
+</form> {% endcomment %} {% endblock content %}

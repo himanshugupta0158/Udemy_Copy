@@ -45,7 +45,12 @@
     </div>
     {% else %}
     <h3>There is no Courses in your Cart.</h3>
-    <a class="btn btn-primary" href="{% url 'dashboard' %}">Back to dashboard</a> {% endif %}
+    {% if refresh %}
+    <a class="btn btn-primary" href="{% url 'cart' user.username %}">Refresh Cart</a>
+    {% endif %}
+    <a class="btn btn-primary" href="{% url 'dashboard' %}">Back to dashboard</a> 
+    
+    {% endif %}
 
 </div>
 {% endblock main_content %}
