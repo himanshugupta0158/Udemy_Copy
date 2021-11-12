@@ -8,17 +8,18 @@ Login
 
 {% block content %}
  	
-<h2>Login Page</h2>
+<h3>Login Page</h3>
  
  <form method="post">
  {% csrf_token %}
   {{ form|crispy }}
+<br>  <a href="{% url 'password_reset' %}">forgotten password ?</a> <br><br>
     <button type="submit" class="btn btn-success">Login</button>
 </form>
-
-<a href="{% url 'password_reset' %}">forgotten password ?</a> <br>
-<a href="{% url 'dashboard' %}">Back to dashboard</a> <br>
-<a href="{% url 'register' %}">Register as student</a> <br>
-<a href="{% url 'register_staff' %}">Register as Teacher</a>
+<br>
+<hr>
+<a href="{% url 'dashboard' %}" style="float: left;" class="btn btn-primary">Back to dashboard</a> 
+<a href="{% url 'register' %}" style="float: center ;margin-left:20%;" class="btn btn-primary">Register as student</a>
+<a href="{% url 'register_staff' %}" style="float: right;" class="btn btn-primary">Register as Teacher</a>
 
  {% endblock content %}
