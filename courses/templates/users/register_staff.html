@@ -4,18 +4,24 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<div class="container">
+
 <h2>Register as a Teacher</h2>
 
 {% if msg %}
-<h4> {{msg}} </h4>
-{% endif %}
+<h4> {{msg}} </h4> <br>
+<a href="{% url 'register_staff' %}" class="btn btn-primary">Back to Register</a>
+{% else %}
 
 <form method="post">
     {% csrf_token %}
   {{ form|crispy }}
     <button type="submit" class="btn btn-success">Register</button>
 </form>
+<br>
+<a href="{% url 'login' %}" class="btn btn-primary">Back to Login</a>
 
-<a href="{% url 'register_staff' %}">Back to Register</a>
+{% endif %}
+<br>
 </div>
 {% endblock %}

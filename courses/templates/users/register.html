@@ -5,12 +5,12 @@
 
 
 {% block content %}
-<div class="card" style="width: 40rem; padding : 25px;">
+<div class="container">
 
 <h2>Register as a Student</h2>
 {% if msg %}
 <h4> {{msg}} </h4>
- 
+ <a href="{% url 'register' %}" class="btn btn-primary">Back to register</a>
 {% else %}
 
 <form method="post" >
@@ -18,8 +18,12 @@
     {{ form|crispy }}
     <button type="submit" class="btn btn-success">Register</button>
 </form>
+<br>
+<a href="{% url 'login' %}" class="btn btn-primary">Back to Login</a>
+
 {% endif %}
-<a href="{% url 'register' %}">Back to register</a>
+<br>
+
 </div>
 
 {% endblock %}
