@@ -229,7 +229,7 @@ def register(request):
             msg = "Signin successfully"
             return redirect('student_profile')
         else:
-            return render(request , "users/register.html" , {'msg' : "Invalid input in password or email!"})
+            return render(request , "users/register.html" , {'msg' : "password mismatched :  password and confirm password do not match!"})
 
 
 # this is used to register teacher
