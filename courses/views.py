@@ -1,11 +1,20 @@
 from django.shortcuts import render , redirect
+
 from django.contrib.auth.models import User
+
 from .models import Courses , Cart , Teacher , Student , Buy
+
 from django.urls import reverse
+
 from courses.forms import CustomUserCreationForm , UserManager
+
 from django.contrib.auth.decorators import login_required
+
 from django.contrib.auth import login
+
+# this is used to access of our System's FileStorageSystem to store data in designated place as defined for media.
 from django.core.files.storage import FileSystemStorage
+
 # Create your views here.
 
 # this is Dashboard function to show all the video
@@ -37,6 +46,8 @@ def profile(request ):
     else:
         return render(request , "courses/dashboard.html" , {'msg' : "Error : profile cannot be displayed "})
 
+
+# this function saves data of any video along with user's name to recognize which user buys what.
 def buy(request , title):
     try:
         Buy(buyer = request.user.username , course = title).save()
@@ -46,12 +57,18 @@ def buy(request , title):
 
 
 
-
+# this function used to show the click video if it is already buyed by user. 
 def show_video(request , title):
+    l = set()
+    buyed = Buy.objects.all()
+    for i in buyed :
+        if request.user.username == i.buyer:
+            l.add(i.course)
     video = Courses.objects.get(title = title)
-    return render(request , 'courses/show_video.html' , {'video' : video})
+    return render(request , 'courses/show_video.html' , {'video' : video ,'buyed' : l})
 
 
+# this function is used to all video according to their category and redirect it to defined html template.
 def course_category(request):
     l = set()
     buyed = Buy.objects.all()
@@ -62,7 +79,7 @@ def course_category(request):
     # except:
     #     return render(request , 'courses/dashboard.html' , {'msg' : 'There is no course category exist.'})
 
-
+# this video show the selected category of video from dashboard.html template
 def show_selected_category(request , category):  
     l = set()
     buyed = Buy.objects.all()
@@ -73,7 +90,7 @@ def show_selected_category(request , category):
 
 
 
-# this is used to upload video by teacher.
+# this is used to upload video by only teacher.
 def upload_video(request):
     if request.method == 'POST':
         title = request.POST['title']
@@ -91,6 +108,7 @@ def upload_video(request):
     return render(request , 'courses/upload.html')
 
 
+# this function is used to check whether user is teacher or student then for only teacher it allow access to upload video.
 def check_user(request):
     profession = 'Teacher'
     n1 = None
@@ -140,7 +158,7 @@ def AddToCart(request ,course):
         course.add(Courses.objects.get(title = i.courses))
     return render(request , 'courses/dashboard.html' , {'courses' : course, 'buyed' : l , 'msg' : 'Course have been added to the cart'})
 
-
+# this function is used to delete data from cart (Cart database).
 def DeleteFromCart(request , course):
     Cart.objects.filter(courses = course).delete()
     l = set()

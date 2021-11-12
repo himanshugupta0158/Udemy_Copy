@@ -3,20 +3,28 @@
 
 {% block main_content %}
 <div class="container">
+{% if video.title in buyed  %}
 
-<h2>{{video.title}}</h2> <br>
+<hr>
+<h2 style="font-weight:500;">{{video.title}}</h2>
+<hr>
+<div style="border:1px solid black;">
 <div class="embed-responsive embed-responsive-21by9">
 <video class="card-img-top" width="320" height="400" autoplay loop controls>
     <source src="{{video.video.url}}" type="video/mkv"> 
     <source src="{{video.video.url}}" type="video/mp4"> 
 </video>
-</div> <br>
-
-Description : {{video.description}} <br>
-Category : {{video.category}} <br>
-Author : {{video.Teacher_name}} <br>
-Created on : {{video.created_on}}
-<br><br><br>
+</div>
+</div> <hr>
+<div class="p-3 mb-2 bg-light text-dark">
+<div class="font-weight-bold" >Description </div> <p>{{video.description}}</p>
+<div class="font-weight-bold">Category</div><p> {{video.category}}</p>
+<div class="font-weight-bold">Author</div> <p>{{video.Teacher_name}} </p>
+<div class="font-weight-bold">Created on</div> <p>{{video.created_on}}</p>
+</div>
+{% else %}
+<h4 class="text-danger">You have not buy this video.</h4>
+{% endif %}
 <a href="{% url 'dashboard' %}" class="btn btn-primary">Go to dashboard</a>
 </div>
 {% endblock main_content %}
