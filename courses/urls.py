@@ -19,9 +19,7 @@ urlpatterns = [
     path("buy/<str:title>", views.buy, name="buy"),
     path('DeleteFromCart/<str:course>', views.DeleteFromCart , name = "DeleteFromCart"),
     path("selected_category/<str:category>", views.show_selected_category, name="selected_category"),
-
-
-    
+    path('DeleteAllFromCart/', views.DeleteAllFromCart , name = "DeleteAllFromCart"),
     
 
 ]

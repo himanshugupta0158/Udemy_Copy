@@ -160,7 +160,7 @@ def AddToCart(request ,course):
 
 # this function is used to delete data from cart (Cart database).
 def DeleteFromCart(request , course):
-    Cart.objects.filter(courses = course).delete()
+    Cart.objects.filter(courses = course , name = request.user.username).delete()
     l = set()
     course = set()
     buyed = Buy.objects.all()
@@ -170,6 +170,11 @@ def DeleteFromCart(request , course):
     for i in Cart.objects.filter(name = request.user.username):
         course.add(Courses.objects.get(title = i.courses))
     return render(request , 'courses/cart.html' , {'courses' : course, 'buyed' : l , 'msg' : 'Course have been removed form the cart'})
+
+def DeleteAllFromCart(request):
+    Cart.objects.filter(name = request.user.username).delete()
+    return render(request , 'courses/cart.html' , {'msg' : 'All Courses have been removed form the cart' , 'refresh' : 'Refresh'})
+
 
 """
 Note : Both student_profile and teacher_profile function automatically invokes
