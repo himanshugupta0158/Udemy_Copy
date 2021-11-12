@@ -3,21 +3,21 @@
 <!-- Default form contact -->
 
 
-<form class="text-center border border-light p-5" method="POST" enctype="multipart/form-data">
+<form class="text-center border border-light p-5" method="POST" enctype="multipart/form-data" required>
 {% csrf_token %}
     <p class="h4 mb-4">Upload Course</p>
 
     <!-- Name -->
-    <input hidden type="text" id="defaultContactFormName" class="form-control mb-4" name="author" value="{{user.username}}">
+    <input hidden type="text" id="defaultContactFormName" class="form-control mb-4" name="author" value="{{user.username}}" required>
 
-    <input type="text" id="defaultContactFormName" class="form-control mb-4" name="title" placeholder="Enter Video Title here">
+    <input type="text" id="defaultContactFormName" class="form-control mb-4" name="title" placeholder="Enter Video Title here" required>
 
     <!-- Email -->
-    <input type="text" id="defaultContactFormEmail" class="form-control mb-4" name="description"  placeholder="Description of content">
+    <input type="text" id="defaultContactFormEmail" class="form-control mb-4" name="description"  placeholder="Description of content" required>
 
     <!-- Subject -->
 
-  <select name="category" class="browser-default custom-select mb-4">
+  <select name="category" class="browser-default custom-select mb-4" required>
         <option selected>Select Category Of Video</option>
         <option>Python</option>
         <option>Java</option>
@@ -25,7 +25,7 @@
         <option>Other</option>
       </select>
 
-    <input type="number" id="defaultContactFormEmail" class="form-control mb-4" name="price" placeholder="price of video">
+    <input type="number" id="defaultContactFormEmail" class="form-control mb-4" name="price" placeholder="price of video" required>
 
 
   <div class="input-group">
@@ -33,7 +33,7 @@
     <span class="input-group-text" id="inputGroupFileAddon01">Upload Course</span>
   </div>
   <div class="custom-file">
-    <input type="file" name="video" accept="/video/*" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" >
+    <input type="file" name="video" accept="/video/*" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" required>
     <label class="custom-file-label" for="inputGroupFile01" style="text-align:center;">Choose Course Video</label>
   </div>
 </div>
